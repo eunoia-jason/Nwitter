@@ -8,6 +8,7 @@ import {
   GithubAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
+import { getFirestore, addDoc, collection } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -20,6 +21,7 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 export const authService = getAuth();
+export const dbService = getFirestore();
 export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -27,4 +29,6 @@ export {
   GoogleAuthProvider,
   GithubAuthProvider,
   signInWithPopup,
+  addDoc,
+  collection,
 };
