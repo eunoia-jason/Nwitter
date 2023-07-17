@@ -8,7 +8,12 @@ import {
   GithubAuthProvider,
   signInWithPopup,
 } from "firebase/auth";
-import { getFirestore, addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  getFirestore,
+  addDoc,
+  collection,
+  onSnapshot,
+} from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -19,7 +24,8 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig);
+
 export const authService = getAuth();
 export const dbService = getFirestore();
 export {
@@ -31,5 +37,5 @@ export {
   signInWithPopup,
   addDoc,
   collection,
-  getDocs,
+  onSnapshot,
 };
