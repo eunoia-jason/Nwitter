@@ -13,6 +13,9 @@ import {
   addDoc,
   collection,
   onSnapshot,
+  doc,
+  deleteDoc,
+  updateDoc,
 } from "firebase/firestore";
 
 const firebaseConfig = {
@@ -38,4 +41,7 @@ export {
   addDoc,
   collection,
   onSnapshot,
+  doc,
+  deleteDoc,
+  updateDoc,
 };

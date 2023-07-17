@@ -1,3 +1,4 @@
+import Nweet from "components/Nweet";
 import { dbService, addDoc, collection, onSnapshot } from "fbase";
 import { useEffect, useState } from "react";
 
@@ -16,7 +17,7 @@ const Home = ({ userObj }) => {
   const onSubmit = async (event) => {
     event.preventDefault();
     await addDoc(collection(dbService, "nweets"), {
-      nweet: nweet,
+      text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
     });
@@ -42,9 +43,11 @@ const Home = ({ userObj }) => {
       </form>
       <div>
         {nweets.map((nweet) => (
-          <div key={nweet.id}>
-            <h4>{nweet.nweet}</h4>
-          </div>
+          <Nweet
+            key={nweet.id}
+            nweetObj={nweet}
+            isOwner={nweet.creatorId === userObj.uid}
+          />
         ))}
       </div>
     </div>
