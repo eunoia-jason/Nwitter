@@ -17,6 +17,8 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
+import "firebase/storage";
+import { getStorage, ref, uploadString } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_API_KEY,
@@ -31,6 +33,7 @@ initializeApp(firebaseConfig);
 
 export const authService = getAuth();
 export const dbService = getFirestore();
+export const storageService = getStorage();
 export {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -44,4 +47,6 @@ export {
   doc,
   deleteDoc,
   updateDoc,
+  ref,
+  uploadString,
 };
