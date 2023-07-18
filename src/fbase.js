@@ -16,6 +16,10 @@ import {
   doc,
   deleteDoc,
   updateDoc,
+  where,
+  query,
+  getDocs,
+  orderBy,
 } from "firebase/firestore";
 import {
   getStorage,
@@ -56,4 +60,8 @@ export {
   uploadString,
   getDownloadURL,
   deleteObject,
+  where,
+  query,
+  getDocs,
+  orderBy,
 };

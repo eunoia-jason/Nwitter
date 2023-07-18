@@ -15,7 +15,7 @@ import { v4 } from "uuid";
 const Home = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [nweets, setNweets] = useState([]);
-  const [attachment, setAttachment] = useState();
+  const [attachment, setAttachment] = useState(null);
   const fileInput = useRef();
   useEffect(() => {
     onSnapshot(collection(dbService, "nweets"), (snapshot) => {
