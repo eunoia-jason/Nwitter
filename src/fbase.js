@@ -17,12 +17,12 @@ import {
   deleteDoc,
   updateDoc,
 } from "firebase/firestore";
-import "firebase/storage";
 import {
   getStorage,
   ref,
   uploadString,
   getDownloadURL,
+  deleteObject,
 } from "firebase/storage";
 
 const firebaseConfig = {
@@ -55,4 +55,5 @@ export {
   ref,
   uploadString,
   getDownloadURL,
+  deleteObject,
 };
