@@ -7,6 +7,7 @@ import {
   storageService,
   ref,
   uploadString,
+  getDownloadURL,
 } from "fbase";
 import { useEffect, useRef, useState } from "react";
 import { v4 } from "uuid";
@@ -27,15 +28,26 @@ const Home = ({ userObj }) => {
   }, []);
   const onSubmit = async (event) => {
     event.preventDefault();
-    const fileRef = ref(storageService, `${userObj.uid}/${v4()}`);
-    const response = await uploadString(fileRef, attachment, "data_url");
-    console.log(response);
-    /* await addDoc(collection(dbService, "nweets"), {
+    let attachmentUrl = null;
+    if (attachment != null) {
+      const attachmentRef = ref(storageService, `${userObj.uid}/${v4()}`);
+      const response = await uploadString(
+        attachmentRef,
+        attachment,
+        "data_url"
+      );
+      attachmentUrl = await getDownloadURL(response.ref);
+    }
+    const nweetObj = {
       text: nweet,
       createdAt: Date.now(),
       creatorId: userObj.uid,
-    });
-    setNweet(""); */
+      attachmentUrl,
+    };
+    await addDoc(collection(dbService, "nweets"), nweetObj);
+    setNweet("");
+    setAttachment(null);
+    fileInput.current.value = "";
   };
   const onChange = (event) => {
     const {
