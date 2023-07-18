@@ -7,6 +7,7 @@ import {
   GoogleAuthProvider,
   GithubAuthProvider,
   signInWithPopup,
+  updateProfile,
 } from "firebase/auth";
 import {
   getFirestore,
@@ -64,4 +65,5 @@ export {
   query,
   getDocs,
   orderBy,
+  updateProfile,
 };
