@@ -1,6 +1,6 @@
 import AppRouter from "components/Router";
 import { useEffect, useState } from "react";
-import { authService, onAuthStateChanged } from "fbase";
+import { authService, onAuthStateChanged, updateProfile } from "fbase";
 
 function App() {
   const [init, setInit] = useState(false);
@@ -8,17 +8,36 @@ function App() {
   useEffect(() => {
     onAuthStateChanged(authService, (user) => {
       if (user) {
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: () =>
+            updateProfile(user, { displayName: user.displayName }),
+        });
+        // setUserObj(user);
       } else {
         setUserObj(null);
       }
       setInit(true);
     });
   }, []);
+  const refreshUser = () => {
+    const user = authService.currentUser;
+    setUserObj(
+      {
+        displayName: user.displayName,
+      }
+      // Object.assign({}, user)
+    );
+  };
   return (
     <>
       {init ? (
-        <AppRouter isLoggedIn={userObj} userObj={userObj} />
+        <AppRouter
+          refreshUser={refreshUser}
+          isLoggedIn={userObj}
+          userObj={userObj}
+        />
       ) : (
         "Initializing..."
       )}
