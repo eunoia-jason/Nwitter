@@ -30,7 +30,7 @@ const Profile = ({ userObj, refreshUser }) => {
   };
   useEffect(() => {
     getMyNweets();
-  }, []);
+  });
   const onChange = (event) => {
     const {
       target: { value },
