@@ -26,6 +26,7 @@ function App() {
     setUserObj(
       {
         displayName: user.displayName,
+        uid: user.uid,
       }
       // Object.assign({}, user)
     );
@@ -41,7 +42,11 @@ function App() {
       ) : (
         "Initializing..."
       )}
-      <footer>&copy; {new Date().getFullYear()} Nwitter</footer>
+      <footer
+        style={{ display: "flex", justifyContent: "center", marginTop: 50 }}
+      >
+        &copy; {new Date().getFullYear()} Nwitter
+      </footer>
     </>
   );
 }
