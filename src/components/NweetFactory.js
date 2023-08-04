@@ -15,7 +15,7 @@ import { faPlus, faTimes } from "@fortawesome/free-solid-svg-icons";
 const NweetFactory = ({ userObj }) => {
   const [nweet, setNweet] = useState("");
   const [attachment, setAttachment] = useState("");
-  const fileInput = useRef();
+  const fileInput = useRef(null);
   const onSubmit = async (event) => {
     if (nweet === "") {
       return;
